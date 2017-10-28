@@ -1,5 +1,6 @@
 package pizzaCalories;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +11,7 @@ public class Pizza {
     private List<Topping> toppings;
 
     public Pizza(String name, int toppingsCount) {
-        setName(name);
+        this.setName(name);
         toppingsCount = setToppingsCount(toppingsCount);
     }
 
@@ -25,7 +26,7 @@ public class Pizza {
     }
 
     private void setName(String name) {
-        boolean isPizzaNameValid = name != null && !name.trim().isEmpty() && name.length() <= 15;
+        boolean isPizzaNameValid = 0 < name.length() && name.length() <= 15;
         if (!isPizzaNameValid) {
             throw new IllegalArgumentException("Pizza name should be between 1 and 15 symbols.");
         }
@@ -54,6 +55,7 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return String.format("%s - %.2f", this.name, calculatePizzaCalories());
+        DecimalFormat df = new DecimalFormat("0.00");
+        return String.format("%s - %s", this.name, df.format(this.calculatePizzaCalories()));
     }
 }

@@ -27,9 +27,7 @@ public class Main {
 
         if ("END".equalsIgnoreCase(nextTokens[0])) {
             return;
-        }
-
-        if ("Topping".equalsIgnoreCase(nextTokens[0])) {
+        } else if ("Topping".equalsIgnoreCase(nextTokens[0])) {
             String toppingName = nextTokens[1];
             double toppingWeight = Double.valueOf(nextTokens[2]);
             try {
@@ -41,16 +39,8 @@ public class Main {
             return;
         }
 
-        //String[] pizzaTokens = br.readLine().split("\\s+");
-        String pizzaName;
-        int toppingsCount;
-        if (tokens.length != 3) {
-            pizzaName = "";
-            toppingsCount = 0;
-        } else {
-            pizzaName = tokens[1];
-            toppingsCount = Integer.valueOf(tokens[2]);
-        }
+        String pizzaName = tokens[1];
+        int toppingsCount = Integer.valueOf(tokens[2]);
 
         try {
             Pizza pizza = new Pizza(pizzaName, toppingsCount);

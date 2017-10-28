@@ -6,20 +6,14 @@ public class Dough {
     private String flourType;
     private String bakingTechnique;
     private double weight;
-    //private double calories;
-
-   // public double getCalories() {
-   //     return this.calories;
-   // }
 
     public Dough() {
     }
 
     public Dough(String flourType, String bakingTechnique, double weight) {
-        setFlourType(flourType);
-        setBakingTechnique(bakingTechnique);
-        setWeight(weight);
-        //this.calories = calculateDoughCalories();
+        this.setFlourType(flourType);
+        this.setBakingTechnique(bakingTechnique);
+        this.setWeight(weight);
     }
 
     private void setFlourType(String flourType) {
@@ -27,7 +21,7 @@ public class Dough {
         if (!isFlourTypeValid) {
             throw new IllegalArgumentException("Invalid type of dough.");
         }
-        this.flourType = flourType.toLowerCase();
+        this.flourType = flourType;
     }
 
     private void setBakingTechnique(String bakingTechnique) {
@@ -36,7 +30,7 @@ public class Dough {
         if (!isBakingTechniqueValid) {
             throw new IllegalArgumentException("Invalid type of dough.");
         }
-        this.bakingTechnique = bakingTechnique.toLowerCase();
+        this.bakingTechnique = bakingTechnique;
     }
 
     private void setWeight(double weight) {
@@ -50,7 +44,7 @@ public class Dough {
     public double calculateDoughCalories() {
         double totalDoughCalorie = 0.0;
         double currentFlourTypeModifier = 0.0;
-        switch (this.flourType) {
+        switch (this.flourType.toLowerCase()) {
             case "white":
                 currentFlourTypeModifier = Modifiers.DEFAULT_WHITE_MODIFIER;
                 break;
@@ -60,7 +54,7 @@ public class Dough {
         }
 
         double currentBakingTechniqueModifier = 0.0;
-        switch (this.bakingTechnique) {
+        switch (this.bakingTechnique.toLowerCase()) {
             case "crispy":
                 currentBakingTechniqueModifier = Modifiers.DEFAULT_CRISPY_MODIFIER;
                 break;

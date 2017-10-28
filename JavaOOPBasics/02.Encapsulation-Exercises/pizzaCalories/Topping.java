@@ -3,17 +3,11 @@ package pizzaCalories;
 public class Topping {
     private String type;
     private double weight;
-    //private double calories;
 
     public Topping(String type, double weight) {
-        setType(type);
-        setWeight(weight);
-        //this.calories = calculateToppingCalories();
+        this.setType(type);
+        this.setWeight(weight);
     }
-
-   // public double getCalories() {
-   //     return this.calories;
-   // }
 
     private void setType(String type) {
         boolean isToppingTypeValid = "meat".equalsIgnoreCase(type) || "veggies".equalsIgnoreCase(type)
@@ -22,7 +16,7 @@ public class Topping {
             throw new IllegalArgumentException(
                     String.format("Cannot place %s on top of your pizza.", type));
         }
-        this.type = type.toLowerCase();
+        this.type = type;
     }
 
     private void setWeight(double weight) {
@@ -37,7 +31,7 @@ public class Topping {
     public double calculateToppingCalories() {
         double totalToppingCalorie = 0.0;
         double currentModifier = 0.0;
-        switch (this.type) {
+        switch (this.type.toLowerCase()) {
             case "meat":
                 currentModifier = Modifiers.DEFAULT_MEAT_MODIFIER;
                 break;
@@ -50,6 +44,8 @@ public class Topping {
             case "sauce":
                 currentModifier = Modifiers.DEFAULT_SAUCE_MODIFIER;
                 break;
+            default:
+                return totalToppingCalorie;
         }
 
         totalToppingCalorie = Modifiers.DEFAULT_INGREDIENT_VALUE * this.weight * currentModifier;
