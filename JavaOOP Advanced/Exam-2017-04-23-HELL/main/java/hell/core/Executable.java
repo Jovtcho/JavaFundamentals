@@ -1,0 +1,7 @@
+package hell.core;
+
+import java.lang.reflect.InvocationTargetException;
+
+public interface Executable {
+    String execute() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException;
+}
